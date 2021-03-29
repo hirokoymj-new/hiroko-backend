@@ -21,10 +21,15 @@ app.use(cors());
 
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
-const apolloServer = new ApolloServer({ schema, uploads: false });
+const apolloServer = new ApolloServer({
+  schema,
+  uploads: false,
+  introspection: true,
+  playground: true,
+});
 apolloServer.applyMiddleware({ app });
 
-app.listen({ port }, () => {
+app.listen({ port: process.env.PORT || 4000 }, () => {
   console.log(
     `🚀Server ready at http://localhost:${port}${apolloServer.graphqlPath}`
   );
