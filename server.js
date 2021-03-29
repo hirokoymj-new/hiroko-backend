@@ -19,14 +19,11 @@ app.use(graphqlUploadExpress({ maxFileSize: 10000000, maxFiles: 10 })); // Maxim
 app.use(express.static("public"));
 app.use(cors());
 
-// Build GraphQL schema based on SDL definitions and resolvers maps
 const schema = makeExecutableSchema({ typeDefs, resolvers });
 
-// Build Apollo server
 const apolloServer = new ApolloServer({ schema, uploads: false });
 apolloServer.applyMiddleware({ app });
 
-// Run server
 app.listen({ port }, () => {
   console.log(
     `🚀Server ready at http://localhost:${port}${apolloServer.graphqlPath}`
