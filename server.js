@@ -9,8 +9,8 @@ import resolvers from "./resolvers";
 
 dotenv.config();
 
-console.log(process.env.NODE_ENV);
-console.log(process.env.MONGO_DB_URL);
+// console.log(process.env.NODE_ENV);
+// console.log(process.env.MONGO_DB_URL);
 
 const port = process.env.PORT || 4000;
 
